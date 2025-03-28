@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { initialContacts } from "./initialContacts";
 
 export type ContactOverview = {
   id: string;
@@ -34,13 +34,7 @@ export type Country = {
 };
 
 const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
-const initialContacts = new Array(50).fill(0).map(() => ({
-  id: faker.string.uuid(),
-  firstName: faker.person.firstName(),
-  lastName: faker.person.lastName(),
-  phoneNumber: faker.phone.number({ style: "international" }),
-  address: faker.location.secondaryAddress(),
-}));
+
 export const client = {
   async getContacts(): Promise<GetContactsResponse> {
     await sleep();
@@ -50,8 +44,9 @@ export const client = {
     await sleep();
     return initialContacts.find((c) => c.id === contactId);
   },
-  async createContact() {
+  async createContact(contact: CreateContactRequest) {
     await sleep();
+    initialContacts.unshift({ id: crypto.randomUUID(), ...contact });
   },
   async editContact(contact: Contact) {
     await sleep();
