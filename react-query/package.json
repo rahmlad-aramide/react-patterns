@@ -15,11 +15,13 @@
     "@mantine/core": "^7.17.3",
     "@mantine/hooks": "^7.17.3",
     "@tabler/icons-react": "^3.19.0",
+    "@tailwindcss/vite": "^4.1.2",
     "@tanstack/react-query": "^5.62.3",
     "@tanstack/react-router": "^1.114.34",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "tailwindcss": "^4.1.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {

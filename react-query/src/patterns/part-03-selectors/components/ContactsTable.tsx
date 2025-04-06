@@ -1,14 +1,12 @@
 import { Alert, Button, Card, Table } from "@mantine/core";
-import { useQuery } from "@tanstack/react-query";
-import { client } from "../api/client";
 import { Spinner } from "./Spinner";
+import { getContactsQueryOptions } from "../api/query";
+import { useQuery } from "@tanstack/react-query";
 
 export const ContactsTable = () => {
-
-  const { data, isPending, isError, refetch } = useQuery({
-    queryKey: ["contacts", "list"],
-    queryFn: () => client.getContacts(),
-  });
+  const { data, isPending, isError, refetch } = useQuery(
+    getContactsQueryOptions
+  );
 
   if (isPending)
     return (

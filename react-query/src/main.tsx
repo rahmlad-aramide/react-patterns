@@ -10,8 +10,11 @@ import {
 } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 import { Patterns } from "./patterns/Patterns";
-import { Pattern1 } from "./patterns/part-01-simple-query/Pattern1";
+import Pattern1 from "./patterns/part-01-simple-query";
+import Pattern2 from "./patterns/part-02-custom-query";
+import Pattern3 from "./patterns/part-03-selectors";
 
 const rootRoute = createRootRoute({
   component: Outlet,
@@ -26,8 +29,22 @@ const pattern1 = createRoute({
   getParentRoute: () => rootRoute,
   component: Pattern1,
 });
-
-const routeTree = rootRoute.addChildren([pattern1, indexRoute]);
+const pattern2 = createRoute({
+  path: "/02",
+  getParentRoute: () => rootRoute,
+  component: Pattern2,
+});
+const pattern3 = createRoute({
+  path: "/03",
+  getParentRoute: () => rootRoute,
+  component: Pattern3,
+});
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  pattern1,
+  pattern2,
+  pattern3,
+]);
 
 // Set up a Router instance
 const router = createRouter({
@@ -45,7 +62,6 @@ declare module "@tanstack/react-router" {
 }
 
 const queryClient = new QueryClient();
-// Render the app
 const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
