@@ -1,14 +1,15 @@
-import { Alert, Button, Card, Table } from "@mantine/core";
+import { Alert, Anchor, Button, Card, Table } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
-import { client } from "../api/client";
+import { getContactsQueryOptions } from "../api/query";
 import { Spinner } from "./Spinner";
 
-export const ContactsTable = () => {
-
-  const { data, isPending, isError, refetch } = useQuery({
-    queryKey: ["contacts", "list"],
-    queryFn: () => client.getContacts(),
-  });
+type ContactsTableProps = {
+  onContactClick: (contactId: string) => void;
+};
+export const ContactsTable = ({ onContactClick }: ContactsTableProps) => {
+  const { data, isPending, isError, refetch } = useQuery(
+    getContactsQueryOptions
+  );
 
   if (isPending)
     return (
@@ -36,7 +37,11 @@ export const ContactsTable = () => {
         <Table.Tbody>
           {data.contacts.map((contact) => (
             <Table.Tr key={contact.id}>
-              <Table.Td>{contact.firstName + " " + contact.lastName}</Table.Td>
+              <Table.Td>
+                <Anchor onClick={() => onContactClick(contact.id)}>
+                  {contact.firstName + " " + contact.lastName}
+                </Anchor>
+              </Table.Td>
             </Table.Tr>
           ))}
         </Table.Tbody>

@@ -30,7 +30,7 @@ export const ContactsTable = () => {
         </Table.Thead>
         <Table.Tbody>
           {data.contacts.map((contact) => (
-            <Table.Tr>
+               <Table.Tr key={contact.id}>
               <Table.Td>{contact.firstName + " " + contact.lastName}</Table.Td>
             </Table.Tr>
           ))}

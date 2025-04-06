@@ -1,7 +1,7 @@
 import { Alert, Button, Card, Table } from "@mantine/core";
-import { Spinner } from "./Spinner";
-import { getContactsQueryOptions } from "../api/query";
 import { useQuery } from "@tanstack/react-query";
+import { getContactsQueryOptions } from "../api/query";
+import { Spinner } from "./Spinner";
 
 export const ContactsTable = () => {
   const { data, isPending, isError, refetch } = useQuery(
@@ -33,7 +33,7 @@ export const ContactsTable = () => {
         </Table.Thead>
         <Table.Tbody>
           {data.contacts.map((contact) => (
-            <Table.Tr>
+            <Table.Tr key={contact.id}>
               <Table.Td>{contact.firstName + " " + contact.lastName}</Table.Td>
             </Table.Tr>
           ))}
