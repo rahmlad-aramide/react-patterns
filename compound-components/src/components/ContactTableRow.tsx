@@ -1,9 +1,9 @@
 import { ActionIcon, Table } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
-import { IconEdit } from "@tabler/icons-react";
 import { ContactOverview } from "../api/client";
 import { useOptimisticContactName } from "../api/hooks";
 import { MantineLink } from "./MantineLink";
+import IconEdit from '@tabler/icons-react/dist/esm/icons/IconEdit';
 
 type ContactTableRowProps = {
   contact: ContactOverview;

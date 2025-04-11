@@ -7,10 +7,11 @@ import {
   Stack,
   TextInput,
 } from "@mantine/core";
-import { IconHome, IconPhone } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { useCreateContact } from "../api/hooks";
 import { useNavigate } from "@tanstack/react-router";
+import IconHome from '@tabler/icons-react/dist/esm/icons/IconHome';
+import IconPhone from '@tabler/icons-react/dist/esm/icons/IconPhone';
 
 type CreateNewContactModalProps = {
   isOpen: boolean;

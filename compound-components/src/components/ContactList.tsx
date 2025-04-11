@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Layout } from "./Layout";
 import { CreateNewContactModal } from "./CreateNewContactModal";
 import { Button } from "@mantine/core";
-import { IconPlus } from "@tabler/icons-react";
 import { ContactsTable } from "./ContactsTable";
 import { useContactsCount } from "../api/hooks";
+import IconPlus from '@tabler/icons-react/dist/esm/icons/IconPlus';
 
 type ContactListProps = {
   selectContactToEdit: (id: string) => void;
