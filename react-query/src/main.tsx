@@ -16,6 +16,7 @@ import Pattern1 from "./patterns/part-01-simple-query";
 import Pattern2 from "./patterns/part-02-custom-query";
 import Pattern3 from "./patterns/part-03-selectors";
 import Pattern4 from "./patterns/part-04-parameterized-queries";
+import Pattern5 from "./patterns/part-05-disabling-queries";
 
 const rootRoute = createRootRoute({
   component: Outlet,
@@ -45,12 +46,18 @@ const pattern4 = createRoute({
   getParentRoute: () => rootRoute,
   component: Pattern4,
 });
+const pattern5 = createRoute({
+  path: "/05",
+  getParentRoute: () => rootRoute,
+  component: Pattern5,
+});
 const routeTree = rootRoute.addChildren([
   indexRoute,
   pattern1,
   pattern2,
   pattern3,
   pattern4,
+  pattern5,
 ]);
 
 // Set up a Router instance
