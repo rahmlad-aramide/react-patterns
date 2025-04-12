@@ -1,4 +1,6 @@
 import { Box, Modal, SimpleGrid, Stack, Text } from "@mantine/core";
+import { useQuery } from "@tanstack/react-query";
+import { getOneContactQueryOptions } from "../api/query";
 import { Spinner } from "./Spinner";
 
 type ContactDetailsModalProps = {
@@ -10,13 +12,15 @@ export const ContactDetailsModal = ({
   contactId,
   onClose,
 }: ContactDetailsModalProps) => {
-  const isPending = false;
-  const data = {
-    firstName: "Jane",
-    lastName: "Doe",
-    phoneNumber: "+000000000",
-    address: "123 Big Avenue",
-  };
+  // const isPending = false;
+  // const data = {
+  //   firstName: "Jane",
+  //   lastName: "Doe",
+  //   phoneNumber: "+000000000",
+  //   address: "123 Big Avenue",
+  // };
+  const { data, isPending } = useQuery(getOneContactQueryOptions(contactId));
+
   return (
     <Modal opened={!!contactId} onClose={onClose} title="Contact Details">
       {isPending && <Spinner />}

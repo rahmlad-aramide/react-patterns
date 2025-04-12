@@ -23,8 +23,12 @@ const initialContacts = new Array(50).fill(0).map(() => ({
 }));
 
 export const client = {
-  async getContacts(): Promise<GetContactsResponse> {
+  async getContacts() {
     await sleep();
     return { contacts: initialContacts };
+  },
+  async getContact(contactId: string) {
+    await sleep();
+    return initialContacts.find((contact) => contact.id === contactId);
   },
 };
