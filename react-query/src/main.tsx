@@ -19,6 +19,7 @@ import Pattern4 from "./patterns/part-04-parameterized-queries";
 import Pattern5 from "./patterns/part-05-disabling-queries";
 import Pattern6 from "./patterns/part-06-pagination";
 import Pattern7 from "./patterns/part-07-prefetching";
+import Pattern8 from "./patterns/part-08-infinite-queries";
 
 const rootRoute = createRootRoute({
   component: Outlet,
@@ -63,6 +64,11 @@ const pattern7 = createRoute({
   getParentRoute: () => rootRoute,
   component: Pattern7,
 });
+const pattern8 = createRoute({
+  path: "/08",
+  getParentRoute: () => rootRoute,
+  component: Pattern8,
+});
 const routeTree = rootRoute.addChildren([
   indexRoute,
   pattern1,
@@ -72,6 +78,7 @@ const routeTree = rootRoute.addChildren([
   pattern5,
   pattern6,
   pattern7,
+  pattern8,
 ]);
 
 // Set up a Router instance
