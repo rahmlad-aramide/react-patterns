@@ -1,6 +1,6 @@
 import { Title } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
-import { getContactsQueryOptions } from "../../part-03-selectors/api/query";
+import { getContactsQueryOptions } from "../../03-selectors/api/query";
 
 export const TopBar = () => {
   const { data } = useQuery({

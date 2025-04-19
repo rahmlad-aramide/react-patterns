@@ -4,7 +4,7 @@ export function Patterns() {
   return (
     <>
       React Query Patterns
-      <Link to={"/01"}>
+      <Link to={"/"}>
         <li>Simple Query</li>
       </Link>
     </>

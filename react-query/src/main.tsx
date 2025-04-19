@@ -11,15 +11,16 @@ import {
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import Pattern1 from "./patterns/01-simple-queries";
+import Pattern2 from "./patterns/02-custom-queries";
+import Pattern3 from "./patterns/03-selectors";
+import Pattern4 from "./patterns/04-parameterized-queries";
+import Pattern5 from "./patterns/05-disabling-queries";
+import Pattern6 from "./patterns/06-pagination";
+import Pattern7 from "./patterns/07-prefetching";
+import Pattern8 from "./patterns/08-infinite-queries";
+import Pattern9 from "./patterns/09-query-key-factories";
 import { Patterns } from "./patterns/Patterns";
-import Pattern1 from "./patterns/part-01-simple-query";
-import Pattern2 from "./patterns/part-02-custom-query";
-import Pattern3 from "./patterns/part-03-selectors";
-import Pattern4 from "./patterns/part-04-parameterized-queries";
-import Pattern5 from "./patterns/part-05-disabling-queries";
-import Pattern6 from "./patterns/part-06-pagination";
-import Pattern7 from "./patterns/part-07-prefetching";
-import Pattern8 from "./patterns/part-08-infinite-queries";
 
 const rootRoute = createRootRoute({
   component: Outlet,
@@ -69,6 +70,11 @@ const pattern8 = createRoute({
   getParentRoute: () => rootRoute,
   component: Pattern8,
 });
+const pattern9 = createRoute({
+  path: "/09",
+  getParentRoute: () => rootRoute,
+  component: Pattern9,
+});
 const routeTree = rootRoute.addChildren([
   indexRoute,
   pattern1,
@@ -79,6 +85,7 @@ const routeTree = rootRoute.addChildren([
   pattern6,
   pattern7,
   pattern8,
+  pattern9,
 ]);
 
 // Set up a Router instance
