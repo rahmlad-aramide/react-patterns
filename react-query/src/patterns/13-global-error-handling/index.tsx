@@ -2,23 +2,23 @@ import {
   MutationCache,
   QueryClient,
   QueryClientProvider,
-  QueryKey,
 } from "@tanstack/react-query";
 import { ContactsPage } from "./components/ContactsPage";
 
 declare module "@tanstack/react-query" {
   interface Register {
-    mutationMeta: {
-      invalidates?: QueryKey;
+    defaultError: {
+      status: number;
     };
   }
 }
-
 const queryClient = new QueryClient({
   mutationCache: new MutationCache({
-    onSuccess: (_data, _variables, _context, mutation) => {
-      {
-        queryClient.invalidateQueries({ queryKey: mutation.meta?.invalidates });
+    onError: (error) => {
+      if (error?.status === 401) {
+        // perform logout
+        localStorage.removeItem("token"); // or whatever you store
+        window.location.href = "/login"; // or navigate with router
       }
     },
   }),

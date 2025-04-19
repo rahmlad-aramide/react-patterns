@@ -2,12 +2,6 @@ import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { Notifications } from "@mantine/notifications";
 import "@mantine/notifications/styles.css";
-import {
-  MutationCache,
-  QueryClient,
-  QueryClientProvider,
-  QueryKey,
-} from "@tanstack/react-query";
 
 import {
   createRootRoute,
@@ -125,28 +119,11 @@ const router = createRouter({
   scrollRestoration: true,
 });
 
-// Register the router instance for type safety
 declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
   }
 }
-declare module "@tanstack/react-query" {
-  interface Register {
-    mutationMeta: {
-      invalidates?: QueryKey;
-    };
-  }
-}
-const queryClient = new QueryClient({
-  mutationCache: new MutationCache({
-    onSuccess: (_data, _variables, _context, mutation) => {
-      {
-        queryClient.invalidateQueries({ queryKey: mutation.meta?.invalidates });
-      }
-    },
-  }),
-});
 
 const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
@@ -155,9 +132,7 @@ if (!rootElement.innerHTML) {
     <StrictMode>
       <MantineProvider forceColorScheme="dark">
         <Notifications />
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-        </QueryClientProvider>
+        <RouterProvider router={router} />
       </MantineProvider>
     </StrictMode>
   );
