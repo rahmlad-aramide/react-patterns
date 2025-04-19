@@ -1,12 +1,20 @@
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Notifications } from "@mantine/notifications";
+import "@mantine/notifications/styles.css";
 import {
-  Outlet,
-  RouterProvider,
+  MutationCache,
+  QueryClient,
+  QueryClientProvider,
+  QueryKey,
+} from "@tanstack/react-query";
+
+import {
   createRootRoute,
   createRoute,
   createRouter,
+  Outlet,
+  RouterProvider,
 } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
@@ -20,6 +28,9 @@ import Pattern6 from "./patterns/06-pagination";
 import Pattern7 from "./patterns/07-prefetching";
 import Pattern8 from "./patterns/08-infinite-queries";
 import Pattern9 from "./patterns/09-query-key-factories";
+import Pattern10 from "./patterns/10-simple-mutations";
+import Pattern11 from "./patterns/11-query-invalidation";
+import Pattern12 from "./patterns/12-automatic-query-invalidation";
 import { Patterns } from "./patterns/Patterns";
 
 const rootRoute = createRootRoute({
@@ -75,6 +86,21 @@ const pattern9 = createRoute({
   getParentRoute: () => rootRoute,
   component: Pattern9,
 });
+const pattern10 = createRoute({
+  path: "/10",
+  getParentRoute: () => rootRoute,
+  component: Pattern10,
+});
+const pattern11 = createRoute({
+  path: "/11",
+  getParentRoute: () => rootRoute,
+  component: Pattern11,
+});
+const pattern12 = createRoute({
+  path: "/12",
+  getParentRoute: () => rootRoute,
+  component: Pattern12,
+});
 const routeTree = rootRoute.addChildren([
   indexRoute,
   pattern1,
@@ -86,6 +112,9 @@ const routeTree = rootRoute.addChildren([
   pattern7,
   pattern8,
   pattern9,
+  pattern10,
+  pattern11,
+  pattern12,
 ]);
 
 // Set up a Router instance
@@ -102,14 +131,30 @@ declare module "@tanstack/react-router" {
     router: typeof router;
   }
 }
+declare module "@tanstack/react-query" {
+  interface Register {
+    mutationMeta: {
+      invalidates?: QueryKey;
+    };
+  }
+}
+const queryClient = new QueryClient({
+  mutationCache: new MutationCache({
+    onSuccess: (_data, _variables, _context, mutation) => {
+      {
+        queryClient.invalidateQueries({ queryKey: mutation.meta?.invalidates });
+      }
+    },
+  }),
+});
 
-const queryClient = new QueryClient();
 const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
       <MantineProvider forceColorScheme="dark">
+        <Notifications />
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
         </QueryClientProvider>
