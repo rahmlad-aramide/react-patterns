@@ -12,13 +12,6 @@ export const ContactDetailsModal = ({
   contactId,
   onClose,
 }: ContactDetailsModalProps) => {
-  // const isPending = false;
-  // const data = {
-  //   firstName: "Jane",
-  //   lastName: "Doe",
-  //   phoneNumber: "+000000000",
-  //   address: "123 Big Avenue",
-  // };
   const { data, isPending } = useQuery(getOneContactQueryOptions(contactId));
 
   return (

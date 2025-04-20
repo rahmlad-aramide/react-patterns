@@ -19,17 +19,9 @@ export const getOneContactQueryOptions = (contactId?: string) =>
 export const useDeleteContact = () =>
   useMutation({
     mutationFn: (contactId: string) => client.deleteContact(contactId),
-    onSuccess: () =>
-      notifications.show({
-        icon: <IconCircleCheckFilled />,
-        color: "green",
-        message: "Contact deleted",
-      }),
-    onError: () =>
-      notifications.show({
-        icon: <IconCircleXFilled />,
-        color: "red",
-        message: "Error deleting contact",
-      }),
-    meta: { invalidates: ["contacts"] },
+    meta: {
+      invalidatesQuery: ["contacts"],
+      successMessage: "Contact deleted",
+      errorMessage: "Error deleting contact",
+    },
   });
