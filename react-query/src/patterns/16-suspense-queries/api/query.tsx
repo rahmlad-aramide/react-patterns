@@ -39,3 +39,8 @@ export const useDeleteContact = () => {
     onSettled: () => queryClient.invalidateQueries({ queryKey: ["contacts"] }),
   });
 };
+export const getProfilePictureQueryOptions = (contactId?: string) =>
+  queryOptions({
+    queryKey: ["profile", "picture", { contactId }],
+    queryFn: () => client.getProfilePictureUrl(),
+  });

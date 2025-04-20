@@ -65,6 +65,10 @@ export const client = {
     contacts = contacts.filter((contact) => contact.id !== contactId);
     saveContacts(contacts);
   },
+  async getProfilePictureUrl() {
+    await sleep();
+    return "/youssef-profile.png";
+  },
 };
 
 function paginate<T>(items: T[], page: number, count: number) {

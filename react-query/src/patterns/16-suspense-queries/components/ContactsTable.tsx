@@ -1,25 +1,17 @@
 import { Alert, Anchor, Button, Card, Pagination, Table } from "@mantine/core";
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getContactsQueryOptions } from "../api/query";
 import { DeleteContactButton } from "./DeleteContactButton";
-import { Spinner } from "./Spinner";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 type ContactsTableProps = {
   onContactClick: (contactId: string) => void;
 };
 export const ContactsTable = ({ onContactClick }: ContactsTableProps) => {
   const [page, setPage] = useState(1);
-  const { data, isPending, isError, refetch } = useQuery(
+  const { data, isError, refetch } = useSuspenseQuery(
     getContactsQueryOptions(page, 50)
   );
-
-  if (isPending)
-    return (
-      <Card withBorder radius={"md"} shadow="md" m="sm">
-        {isPending && <Spinner />}
-      </Card>
-    );
 
   if (isError)
     return (
