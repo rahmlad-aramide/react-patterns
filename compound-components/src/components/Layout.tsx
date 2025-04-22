@@ -1,7 +1,7 @@
 import { AppShell, Flex, Title } from "@mantine/core";
-import { IconAddressBook } from "@tabler/icons-react";
 import { Link } from "@tanstack/react-router";
 import { ReactNode } from "react";
+import IconAddressBook from '@tabler/icons-react/dist/esm/icons/IconAddressBook';
 
 type LayoutProps = {
   title: ReactNode;

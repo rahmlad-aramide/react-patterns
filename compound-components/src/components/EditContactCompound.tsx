@@ -6,12 +6,13 @@ import {
   Stack,
   TextInput,
 } from "@mantine/core";
-import { IconHome, IconPhone } from "@tabler/icons-react";
 import { ReactNode, useEffect, useState } from "react";
 import { Contact } from "../api/client";
 import { useContactDetails, useEditContact } from "../api/hooks";
 import { createContext } from "../utils/createContext";
 import { Spinner } from "./Spinner";
+import IconHome from '@tabler/icons-react/dist/esm/icons/IconHome';
+import IconPhone from '@tabler/icons-react/dist/esm/icons/IconPhone';
 
 type FormContact = {
   firstName: string;
