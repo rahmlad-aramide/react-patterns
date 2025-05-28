@@ -1,4 +1,4 @@
-import { Button } from "@mantine/core";
+import { Button, Card, Title } from "@mantine/core";
 import type { ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -14,10 +14,15 @@ export const QueryErrorBoundary = ({ children }: QueryErrorBoundaryProps) => {
     <ErrorBoundary
       onReset={reset}
       fallbackRender={({ resetErrorBoundary }) => (
-        <div>
+        <Card withBorder radius={"md"} shadow="md" m="sm">
+          <Title>Oups</Title>
           There was an error!
-          <Button onClick={() => resetErrorBoundary()}>Try again</Button>
-        </div>
+          <div>
+            <Button color="red" onClick={() => resetErrorBoundary()}>
+              Try again
+            </Button>
+          </div>
+        </Card>
       )}
     >
       {children}

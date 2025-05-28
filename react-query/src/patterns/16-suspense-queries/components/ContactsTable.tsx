@@ -1,8 +1,9 @@
 import { Alert, Anchor, Button, Card, Pagination, Table } from "@mantine/core";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getContactsQueryOptions } from "../api/query";
+import { ContactNumber } from "./ContactNumber";
 import { DeleteContactButton } from "./DeleteContactButton";
-import { useSuspenseQuery } from "@tanstack/react-query";
 
 type ContactsTableProps = {
   onContactClick: (contactId: string) => void;
@@ -37,6 +38,7 @@ export const ContactsTable = ({ onContactClick }: ContactsTableProps) => {
                 <Anchor onClick={() => onContactClick(contact.id)}>
                   {contact.firstName + " " + contact.lastName}
                 </Anchor>
+                <ContactNumber contactId={contact.id} />
               </Table.Td>
               <Table.Td className="flex justify-end opacity-0 group-hover:opacity-100 transition-all">
                 <DeleteContactButton contactId={contact.id} />
