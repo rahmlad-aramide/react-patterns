@@ -1,50 +1,31 @@
-# React + TypeScript + Vite
+# Awesome React Query Patterns
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A curated collection of **must-know TanStack Query patterns**.
 
-Currently, two official plugins are available:
+## Patterns
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Simple queries](./src/patterns/01-simple-queries)
+- [Custom queries](./src/patterns/02-custom-queries)
+- [Selectors](./src/patterns/03-selectors)
+- [Parameterized queries](./src/patterns/04-parameterized-queries)
+- [Disabling queries](./src/patterns/05-disabling-queries)
+- [Pagination](./src/patterns/06-pagination)
+- [Prefetching](./src/patterns/07-prefetching)
+- [Infinite queries](./src/patterns/08-infinite-queries)
+- [Query key factories](./src/patterns/09-query-key-factories)
+- [Simple mutations](./src/patterns/10-simple-mutations)
+- [Query invalidation](./src/patterns/11-query-invalidation)
+- [Automatic query invalidation](./src/patterns/12-automatic-query-invalidation)
+- [Global error handling](./src/patterns/13-global-error-handling)
+- [Optimistic updates in UI](./src/patterns/14-optimistic-updates-in-ui)
+- [Optimistic updates in cache](./src/patterns/15-optimistic-updates-in-cache)
 
-## Expanding the ESLint configuration
+- [Suspense queries](./src/patterns/16-suspense-queries)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Btw you can find detailed explanations and examples in this [YouTube playlist](https://www.youtube.com/playlist?list=PLMzbFwgyt2sioIidAP-PwbzoNijVfnM8y).
 
-- Configure the top-level `parserOptions` property like this:
+## Contributing
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Contributions are welcome!
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Feel free to open a Pull Request or a GitHub issue!
