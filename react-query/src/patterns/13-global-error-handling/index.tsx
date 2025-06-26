@@ -27,7 +27,7 @@ const queryClient = new QueryClient({
 export default function Pattern() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ContactsPage />;
+      <ContactsPage />
     </QueryClientProvider>
   );
 }

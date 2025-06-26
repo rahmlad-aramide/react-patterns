@@ -4,7 +4,6 @@ import { client } from "../api/client";
 import { Spinner } from "./Spinner";
 
 export const ContactsTable = () => {
-
   const { data, isPending, isError, refetch } = useQuery({
     queryKey: ["contacts", "list"],
     queryFn: () => client.getContacts(),

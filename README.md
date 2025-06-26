@@ -15,8 +15,8 @@ This repository showcases essential React patterns with practical examples and e
   - Custom queries
   - Selectors
   - Parameterized queries
-  - Disabling queries
   - Pagination
+  - Disabling queries
   - Prefetching
   - Infinite queries
   - Query key factories

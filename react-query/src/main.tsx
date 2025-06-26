@@ -17,8 +17,8 @@ import Pattern1 from "./patterns/01-simple-queries";
 import Pattern2 from "./patterns/02-custom-queries";
 import Pattern3 from "./patterns/03-selectors";
 import Pattern4 from "./patterns/04-parameterized-queries";
-import Pattern5 from "./patterns/05-disabling-queries";
-import Pattern6 from "./patterns/06-pagination";
+import Pattern6 from "./patterns/05-pagination";
+import Pattern5 from "./patterns/06-disabling-queries";
 import Pattern7 from "./patterns/07-prefetching";
 import Pattern8 from "./patterns/08-infinite-queries";
 import Pattern9 from "./patterns/09-query-key-factories";
@@ -60,14 +60,14 @@ const pattern4 = createRoute({
   component: Pattern4,
 });
 const pattern5 = createRoute({
-  path: "/05-disabling-queries",
-  getParentRoute: () => rootRoute,
-  component: Pattern5,
-});
-const pattern6 = createRoute({
-  path: "/06-pagination",
+  path: "/05-pagination",
   getParentRoute: () => rootRoute,
   component: Pattern6,
+});
+const pattern6 = createRoute({
+  path: "/06-disabling-queries",
+  getParentRoute: () => rootRoute,
+  component: Pattern5,
 });
 const pattern7 = createRoute({
   path: "/07-prefetching",

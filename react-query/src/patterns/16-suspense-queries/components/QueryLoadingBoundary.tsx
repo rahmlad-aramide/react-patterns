@@ -1,7 +1,7 @@
-import { Card } from "@mantine/core";
+import { Card, Skeleton } from "@mantine/core";
 import { ReactNode } from "@tanstack/react-router";
 import { Suspense } from "react";
-import { Spinner } from "./Spinner";
+import { Layout } from "./Layout";
 
 type QueryLoadingBoundaryProps = {
   children: ReactNode;
@@ -13,9 +13,29 @@ export const QueryLoadingBoundary = ({
   return (
     <Suspense
       fallback={
-        <Card withBorder radius={"md"} shadow="md" m="sm">
-          <Spinner />
-        </Card>
+        <Layout>
+          <Card withBorder radius={"md"} shadow="md" m="sm" mt={72}>
+            <div className="grid gap-2">
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+              <Skeleton height={42} />
+            </div>
+          </Card>
+        </Layout>
       }
     >
       {children}

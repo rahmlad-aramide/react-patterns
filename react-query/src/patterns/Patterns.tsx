@@ -16,11 +16,11 @@ export function Patterns() {
       <Link to={"/04-parameterized-queries"}>
         <li>04-parameterized-queries</li>
       </Link>
-      <Link to={"/05-disabling-queries"}>
-        <li>05-disabling-queries</li>
+      <Link to={"/05-pagination"}>
+        <li>05-pagination</li>
       </Link>
-      <Link to={"/06-pagination"}>
-        <li>06-pagination</li>
+      <Link to={"/06-disabling-queries"}>
+        <li>06-disabling-queries</li>
       </Link>
       <Link to={"/07-prefetching"}>
         <li>07-prefetching</li>
