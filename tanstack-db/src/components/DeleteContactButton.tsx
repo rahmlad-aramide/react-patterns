@@ -1,6 +1,6 @@
 import { ActionIcon } from "@mantine/core";
 import { IconTrash } from "@tabler/icons-react";
-import { useDeleteContact } from "../api/query";
+import { useDeleteContact } from "../api/db";
 type DeleteContactButtonProps = {
   contactId: string;
 };
@@ -8,14 +8,9 @@ type DeleteContactButtonProps = {
 export const DeleteContactButton = ({
   contactId,
 }: DeleteContactButtonProps) => {
-  const { mutate, isPending } = useDeleteContact();
+  const { mutate } = useDeleteContact();
   return (
-    <ActionIcon
-      variant="light"
-      color="red"
-      loading={isPending}
-      onClick={() => mutate(contactId)}
-    >
+    <ActionIcon variant="light" color="red" onClick={() => mutate(contactId)}>
       <IconTrash size={14} />
     </ActionIcon>
   );

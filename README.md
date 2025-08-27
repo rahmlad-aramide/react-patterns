@@ -26,6 +26,7 @@ This repository showcases essential React patterns with practical examples and e
   - Global error handling
   - Optimistic updates in UI
   - Optimistic updates in cache
+- TanStack DB
 
 Btw you can find detailed explanations and examples in this [YouTube playlist](https://www.youtube.com/playlist?list=PLMzbFwgyt2sioIidAP-PwbzoNijVfnM8y).
 

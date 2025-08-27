@@ -27,20 +27,20 @@ export const EditContactModal = ({
     phoneNumber: "",
     address: "",
   });
-  const { data: contact, isPending: isContactPending } =
-    useContactDetails(editContactId);
-  const { mutate, isPending, error, reset } = useEditContact(
-    editContactId,
-    () => close()
-  );
+  const {
+    data: contact,
+    isPending: isContactPending,
+    error,
+  } = useContactDetails(editContactId);
+  const { mutate } = useEditContact(editContactId);
   useEffect(() => {
     if (contact) {
-      reset();
       setFormState(contact);
     }
   }, [contact]);
   const onSaveClick = () => {
     mutate({ ...formState, id: editContactId! });
+    close();
   };
   return (
     <Modal opened={!!editContactId} onClose={close} title="Edit  Contact">
@@ -102,9 +102,7 @@ export const EditContactModal = ({
         >
           Cancel
         </Button>
-        <Button onClick={onSaveClick} loading={isPending}>
-          Save
-        </Button>
+        <Button onClick={onSaveClick}>Save</Button>
       </Flex>
     </Modal>
   );

@@ -1,7 +1,6 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { ContactsPage } from "./components/ContactsPage";
-
-const queryClient = new QueryClient();
+import { queryClient } from "./api/db";
 
 export default function App() {
   return (

@@ -1,5 +1,5 @@
 import { Title } from "@mantine/core";
-import { useContactsCount } from "../api/query";
+import { useContactsCount } from "../api/db";
 
 export const TopBar = () => {
   const { data } = useContactsCount();

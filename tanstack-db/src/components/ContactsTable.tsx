@@ -1,5 +1,5 @@
-import { Alert, Anchor, Button, Card, Table } from "@mantine/core";
-import { useContacts } from "../api/query";
+import { Alert, Anchor, Card, Table } from "@mantine/core";
+import { useContacts } from "../api/db";
 import { DeleteContactButton } from "./DeleteContactButton";
 import { Spinner } from "./Spinner";
 
@@ -7,22 +7,23 @@ type ContactsTableProps = {
   onContactClick: (contactId: string) => void;
 };
 export const ContactsTable = ({ onContactClick }: ContactsTableProps) => {
-  const { data, isPending, isError, refetch } = useContacts();
+  const { data, isLoading, isError } = useContacts();
 
-  if (isPending)
+  if (isLoading)
     return (
       <Card withBorder radius={"md"} shadow="md" m="sm">
-        {isPending && <Spinner />}
+        <Spinner />{" "}
       </Card>
     );
 
   if (isError)
     return (
-      <Alert variant="light" color="red" title="Error loading contacts" m="sm">
-        <Button color="red" onClick={() => refetch()}>
-          Try Again
-        </Button>
-      </Alert>
+      <Alert
+        variant="light"
+        color="red"
+        title="Error loading contacts"
+        m="sm"
+      ></Alert>
     );
   return (
     <Card withBorder radius={"md"} shadow="md" m="sm">
@@ -34,7 +35,7 @@ export const ContactsTable = ({ onContactClick }: ContactsTableProps) => {
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>
-          {data.contacts.map((contact) => (
+          {data.map((contact) => (
             <Table.Tr key={contact.id} className="group">
               <Table.Td>
                 <Anchor onClick={() => onContactClick(contact.id)}>
